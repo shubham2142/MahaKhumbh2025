@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { useNavigate } from "react-router-dom"; // ✅ Import useNavigate
+import { useNavigate } from "react-router-dom";
 
 const AdminSignup = () => {
   const [formData, setFormData] = useState({
@@ -10,7 +10,7 @@ const AdminSignup = () => {
     confirmPassword: "",
   });
   const [error, setError] = useState("");
-  const navigate = useNavigate(); // ✅ Initialize navigate hook
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setFormData((prev) => ({
@@ -25,21 +25,18 @@ const AdminSignup = () => {
       setError("Passwords do not match.");
       return;
     }
-    // Reset error and handle form submission logic
     setError("");
     console.log("Admin Registered:", formData);
-
-    // Redirect to another page after successful signup (e.g., to Admin Dashboard)
-    navigate("/admin-dashboard"); // ✅ Redirect after signup
+    navigate("/admin-dashboard");
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-neutral-400 to-black-800 flex items-center justify-center px-4">
+    <div className="min-h-screen w-80% overflow-x-hidden bg-gradient-to-br from-neutral-400 to-black-800 flex items-center justify-center px-2 sm:px-4">
       <motion.div
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ type: "spring", stiffness: 60 }}
-        className="bg-white shadow-xl rounded-2xl p-8 w-full max-w-md"
+        className="bg-white shadow-xl rounded-2xl p-8 w-screen max-w-md"
       >
         <motion.h2
           className="text-3xl font-bold text-center text-orange-700 mb-6"

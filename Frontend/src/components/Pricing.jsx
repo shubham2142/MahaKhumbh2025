@@ -1,3 +1,5 @@
+import React from "react";
+
 import CrowdGraph from "./CrowdGraph";
 import CrowdScale from "./CrowdScale";
 

@@ -1,7 +1,6 @@
 import React from "react";
 import HeroSection from "./HeroSection";
 import FeatureSection from "./FeatureSection";
-import Workflow from "./Workflow";
 import Pricing from "./Pricing";
 import ScopeSection from "./ScopeSection";
 
