@@ -16,7 +16,7 @@ const App = () => {
   return (
     <>
       <Navbar />
-      <main className="pt-20 w-screen">
+      <main className="pt-20 w-screen overflow-x-hidden">
         <div className="max-w-7xl mx-auto px-6">
           <Routes>
             <Route path="/" element={<HomePage />} />

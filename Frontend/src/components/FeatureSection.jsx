@@ -29,7 +29,7 @@ const FeatureSection = () => {
   };
 
   return (
-    <div className="mt-8 px-4"> {/* Reduced top margin here */}
+    <div className="mt-8 px-4 "> {/* Reduced top margin here */}
       <h2 className="text-4xl font-bold text-center text-orange-600 mb-4">
         MahaKumbh Demo
       </h2>

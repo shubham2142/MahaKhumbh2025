@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <footer className="mt-10 border-t py-6 border-neutral-700 bg-neutral-900 text-neutral-300">
+    <footer className="mt-10 border-t py-6  border-neutral-700 bg-neutral-900 text-neutral-300">
       <div className="flex justify-between flex-wrap gap-6 text-sm px-4">
         <div className="min-w-[200px]">
           <h3 className="text-md font-semibold mb-2 text-white">About Mahakumbh</h3>

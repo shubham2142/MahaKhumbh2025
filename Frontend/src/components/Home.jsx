@@ -6,7 +6,7 @@ import ScopeSection from "./ScopeSection";
 
 const HomePage = () => {
   return (
-    <div className="bg-neutral-900">
+    <div className="bg-neutral-900 ">
       {/* Hero Section */}
       <section id="hero" className="bg-neutral-900 text-white py-20">
         <HeroSection />
