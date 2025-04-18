@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { useNavigate } from "react-router-dom";
 
 const AdminSignup = () => {
   const [formData, setFormData] = useState({
@@ -10,28 +9,46 @@ const AdminSignup = () => {
     confirmPassword: "",
   });
   const [error, setError] = useState("");
-  const navigate = useNavigate();
+  const [success, setSuccess] = useState(false);
 
   const handleChange = (e) => {
+    const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
-      [e.target.name]: e.target.value,
+      [name]: value,
     }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     if (formData.password !== formData.confirmPassword) {
-      setError("Passwords do not match.");
+      setError("❌ Passwords do not match.");
+      setSuccess(false);
       return;
     }
-    setError("");
-    console.log("Admin Registered:", formData);
-    navigate("/admin-dashboard");
+
+    // Vite-compatible environment variables
+    const validName = import.meta.env.VITE_ADMIN_NAME;
+    const validEmail = import.meta.env.VITE_ADMIN_EMAIL;
+    const validPassword = import.meta.env.VITE_ADMIN_PASSWORD;
+
+    if (
+      formData.name === validName &&
+      formData.email === validEmail &&
+      formData.password === validPassword
+    ) {
+      setError("");
+      setSuccess(true);
+      console.log("✅ Valid Admin User:", formData);
+    } else {
+      setError("❌ Invalid credentials. Please try again.");
+      setSuccess(false);
+    }
   };
 
   return (
-    <div className="min-h-screen w-80% overflow-x-hidden bg-gradient-to-br from-neutral-400 to-black-800 flex items-center justify-center px-2 sm:px-4">
+    <div className="min-h-screen w-full bg-gradient-to-br from-neutral-400 to-black-800 flex items-center justify-center px-2 sm:px-4">
       <motion.div
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
@@ -47,9 +64,10 @@ const AdminSignup = () => {
           Admin Signup
         </motion.h2>
 
-        {error && (
-          <div className="text-red-600 text-center mb-4">
-            <p>{error}</p>
+        {error && <div className="text-red-600 text-center mb-4">{error}</div>}
+        {success && (
+          <div className="text-green-600 text-center mb-4 font-semibold">
+            ✅ Valid Admin! You are signed in.
           </div>
         )}
 
@@ -65,14 +83,15 @@ const AdminSignup = () => {
                 {field === "confirmPassword" ? "Confirm Password" : field}
               </label>
               <input
-                type={field.includes("password") ? "password" : field}
-                name={field}
-                value={formData[field]}
-                onChange={handleChange}
-                required
-                className="mt-1 w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500 transition duration-300"
-                placeholder={`Enter your ${field === "confirmPassword" ? "password again" : field}`}
-              />
+              type={field === "password" || field === "confirmPassword" ? "password" : "text"}
+               name={field}
+              value={formData[field]}
+              onChange={handleChange}
+              required
+              className="mt-1 w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500 transition duration-300"
+             placeholder={`Enter your ${field === "confirmPassword" ? "password again" : field}`}
+             />
+
             </motion.div>
           ))}
 
