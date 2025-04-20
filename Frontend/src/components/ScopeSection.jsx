@@ -2,16 +2,10 @@ import { motion } from "framer-motion";
 import React from "react";
 
 const scopeDetails = [
-  "Real-time crowd count monitoring using AI-powered surveillance.",
-  "Crowd density detection through image and video analysis pipelines.",
-  "Heatmap generation for identifying critical congestion zones.",
-  "Automated alerts for high-risk zones to aid crowd control teams.",
-  "Custom analytics dashboards for decision makers and event coordinators.",
-  "Integration with government & local law enforcement systems.",
-  "Historical data storage for pattern analysis and future planning.",
-  "Mobile-friendly access for field workers and volunteers.",
-  "Smart routing suggestions for optimized pedestrian flow.",
-  "Drone-based visual intelligence integration with centralized system."
+  "Feature-1",
+  "Feature-2",
+  "Feature-3",
+  "Feature-4"
 ];
 
 const ScopeSection = () => {

@@ -2,13 +2,15 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-import img1 from "../assets/code.jpg";
-import img2 from "../assets/code.jpg";
-import img3 from "../assets/code.jpg";
-import img4 from "../assets/code.jpg";
+import img1 from "../assets/first.jpg";
+import img2 from "../assets/uploader.jpg";
+import img3 from "../assets/crowd.jpg";
+import img4 from "../assets/analyze.jpg";
+import img5 from "../assets/count.jpg";
+
 
 const FeatureSection = () => {
-  const images = [img1, img2, img3, img4];
+  const images = [img1, img2, img3, img4, img5];
 
   const settings = {
     dots: true,

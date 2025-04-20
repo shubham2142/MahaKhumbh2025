@@ -10,6 +10,9 @@ import Testimonials from "./components/Testimonials";
 import AdminSignup from "./components/AdminSignup"; 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import MainPage from './pages/MainPage';
+import TimeSeriesChart from "./components/TimeSeriesChart";
+import MapComponent from "./components/MapComponent";
 
 
 const App = () => {
@@ -24,8 +27,11 @@ const App = () => {
             <Route path="/workflow" element={<Workflow />} />
             <Route path="/analyzer" element={<ImageAnalyzer />} />
             <Route path="/pricing" element={<Pricing />} />
-            <Route path="/testimonials" element={<Testimonials />} />
+            <Route path="/testimonials" element={<MapComponent />} />
             <Route path="/admin" element={<AdminSignup />} /> 
+            <Route element={<MainPage/>} path='/'/>
+            <Route element={<TimeSeriesChart/>} path='/analysis'/>
+            <Route element={<MapComponent/>} path='/map'/>
           </Routes>
         </div>
       </main>

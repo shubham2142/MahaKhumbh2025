@@ -1,21 +1,18 @@
 import React from "react";
-
-import CrowdGraph from "./CrowdGraph";
-import CrowdScale from "./CrowdScale";
+import TimeSeriesChart from "./TimeSeriesChart";
 
 const Pricing = () => {
   return (
-    <div className="mt-10 px-4 bg-neutral-900 text-white"> {/* Dark background */}
-      <h2 className="text-4xl sm:text-5xl text-center text-orange-600 mb-10">
-        Crowd Analysis
+    <div className="bg-gradient-to-br from-neutral-900 via-black to-neutral-800 text-white py-5 px-6 min-h-screen">
+      <h2 className="text-4xl sm:text-5xl font-bold text-center text-orange-500 mb-12 drop-shadow-lg">
+        📈 Crowd Analysis
       </h2>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 max-w-6xl mx-auto">
-        {/* Graph Section */}
-        <CrowdGraph />
-
-        {/* Scale Section */}
-        <CrowdScale />
+      <div className="max-w-4xl mx-auto bg-white/10 p-8 rounded-3xl shadow-lg hover:shadow-orange-500/30 transition duration-300">
+        <h3 className="text-2xl font-semibold text-orange-400 mb-6 text-center">
+          People Count Over Time
+        </h3>
+        <TimeSeriesChart />
       </div>
     </div>
   );
