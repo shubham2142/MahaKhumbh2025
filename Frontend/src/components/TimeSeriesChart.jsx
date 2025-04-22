@@ -18,15 +18,29 @@ const TimeSeriesChart = () => {
             label: "People Count Over Time",
             data: counts,
             fill: true,
-            backgroundColor: "rgba(255, 165, 0, 0.2)",
-            borderColor: "orange",
+            backgroundColor: "rgba(70, 130, 180, 0.2)", // Light steel blue fill
+            borderColor: "rgba(70, 130, 180, 1)", // Steel blue border
             tension: 0.4,
-            pointRadius: 5,
-            pointHoverRadius: 7,
-            pointBackgroundColor: "orange",
+            pointRadius: 6,
+            pointHoverRadius: 10,
+            pointBackgroundColor: "rgba(70, 130, 180, 1)", // Steel blue points
+            pointBorderColor: "rgba(255, 255, 255, 1)", // White border for points
+            pointBorderWidth: 2,
+            borderWidth: 2,
+            lineTension: 0.4,
+            hoverBackgroundColor: "rgba(70, 130, 180, 0.6)",
           },
         ],
       };
+
+      // Gradient background for fill
+      const ctx = chartRef.current.getContext("2d");
+      const gradient = ctx.createLinearGradient(0, 0, 0, 400);
+      gradient.addColorStop(0, "rgba(70, 130, 180, 0.6)"); // Start color (blue)
+      gradient.addColorStop(1, "rgba(70, 130, 180, 0)"); // End color (transparent)
+
+      // Update dataset with gradient background
+      data.datasets[0].backgroundColor = gradient;
 
       if (chartInstanceRef.current) {
         chartInstanceRef.current.destroy();
@@ -37,10 +51,26 @@ const TimeSeriesChart = () => {
         data: data,
         options: {
           responsive: true,
+          animations: {
+            tension: {
+              duration: 1000,
+              easing: "easeInOutQuad",
+              from: 0.4,
+              to: 0.2,
+            },
+          },
           plugins: {
             tooltip: {
               mode: "index",
               intersect: false,
+              backgroundColor: "#ffffff",
+              titleColor: "#333",
+              bodyColor: "#333",
+              borderColor: "rgba(70, 130, 180, 0.6)",
+              borderWidth: 1,
+              caretSize: 8,
+              cornerRadius: 6,
+              padding: 12,
             },
             legend: {
               display: true,
@@ -69,12 +99,26 @@ const TimeSeriesChart = () => {
             x: {
               ticks: {
                 color: "#374151", // Gray-700
+                font: {
+                  size: 12,
+                  family: "Arial, sans-serif",
+                },
+              },
+              grid: {
+                borderColor: "rgba(0, 0, 0, 0.1)",
               },
             },
             y: {
               beginAtZero: true,
               ticks: {
                 color: "#374151",
+                font: {
+                  size: 12,
+                  family: "Arial, sans-serif",
+                },
+              },
+              grid: {
+                borderColor: "rgba(0, 0, 0, 0.1)",
               },
             },
           },

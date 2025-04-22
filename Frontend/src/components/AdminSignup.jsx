@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom"; // for navigation
 
 const AdminSignup = () => {
   const [formData, setFormData] = useState({
@@ -10,6 +11,7 @@ const AdminSignup = () => {
   });
   const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
+  const navigate = useNavigate(); // Initialize navigation
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -28,7 +30,6 @@ const AdminSignup = () => {
       return;
     }
 
-    // Vite-compatible environment variables
     const validName = import.meta.env.VITE_ADMIN_NAME;
     const validEmail = import.meta.env.VITE_ADMIN_EMAIL;
     const validPassword = import.meta.env.VITE_ADMIN_PASSWORD;
@@ -41,6 +42,11 @@ const AdminSignup = () => {
       setError("");
       setSuccess(true);
       console.log("✅ Valid Admin User:", formData);
+
+      // Optional: Show success message before navigating
+      setTimeout(() => {
+        navigate("/testimonials");
+      }, 1000); // Delay to allow message display
     } else {
       setError("❌ Invalid credentials. Please try again.");
       setSuccess(false);
@@ -83,15 +89,20 @@ const AdminSignup = () => {
                 {field === "confirmPassword" ? "Confirm Password" : field}
               </label>
               <input
-              type={field === "password" || field === "confirmPassword" ? "password" : "text"}
-               name={field}
-              value={formData[field]}
-              onChange={handleChange}
-              required
-              className="mt-1 w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500 transition duration-300"
-             placeholder={`Enter your ${field === "confirmPassword" ? "password again" : field}`}
-             />
-
+                type={
+                  field === "password" || field === "confirmPassword"
+                    ? "password"
+                    : "text"
+                }
+                name={field}
+                value={formData[field]}
+                onChange={handleChange}
+                required
+                className="mt-1 w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-orange-500 transition duration-300"
+                placeholder={`Enter your ${
+                  field === "confirmPassword" ? "password again" : field
+                }`}
+              />
             </motion.div>
           ))}
 
